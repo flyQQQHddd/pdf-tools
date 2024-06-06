@@ -1,0 +1,7 @@
+*.spec
+get-pip.py
+\build
+\dist
+\env
+\example
+\__pycache__
