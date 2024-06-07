@@ -27,7 +27,7 @@ Step1：下载 `python-3.8.9-embed-amd64` 并解压
 https://www.python.org/ftp/python/3.8.9/python-3.8.9-embed-amd64.zip
 ```
 
-Step2：将解压后的 `Python` 置于 `env `目录下
+Step2：将解压后的 `Python` 置于 `env` 目录下
 
 ```
 mkdir env
@@ -39,7 +39,16 @@ Step3：安装 `PIP`
 ./env/python.exe ./get-pip.py
 ```
 
-Step4：安装第三方包
+Step4：修改 `Python` 配置
+
+```
+# ./env/python38._pth
+
+# Uncomment to run site.main() automatically
+import site # 解开这一行的注释（删除`#`）
+```
+
+Step5：安装第三方包
 
 ```
 ./env/python.exe -m pip install -r ./requirements.txt
@@ -56,6 +65,10 @@ Step4：安装第三方包
 ```
 ./build.ps1
 ```
+
+### 界面开发（安装 wxFormBuilder ）
+
+https://github.com/wxFormBuilder/wxFormBuilder/releases/download/v4.2.1/wxFormBuilder-4.2.1-x64.exe
 
 ## 功能
 
