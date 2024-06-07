@@ -146,7 +146,7 @@
                 <property name="window_extra_style"></property>
                 <property name="window_name"></property>
                 <property name="window_style"></property>
-                <event name="OnButtonClick">add</event>
+                <event name="OnButtonClick">OnAddFile</event>
               </object>
             </object>
             <object class="sizeritem" expanded="true">
@@ -221,7 +221,7 @@
                 <property name="window_extra_style"></property>
                 <property name="window_name"></property>
                 <property name="window_style"></property>
-                <event name="OnButtonClick">clearfiles</event>
+                <event name="OnButtonClick">OnClearFiles</event>
               </object>
             </object>
           </object>
@@ -261,6 +261,8 @@
                 <property name="window_extra_style"></property>
                 <property name="window_name"></property>
                 <property name="window_style"></property>
+                <event name="OnDataViewListCtrlItemContextMenu">fileListOnDataViewListCtrlItemContextMenu</event>
+                <event name="OnDataViewListCtrlSelectionChanged">fileListOnDataViewListCtrlSelectionChanged</event>
                 <object class="dataViewListColumn" expanded="true">
                   <property name="align">wxALIGN_CENTER</property>
                   <property name="ellipsize"></property>
@@ -509,7 +511,7 @@
             <property name="window_extra_style"></property>
             <property name="window_name"></property>
             <property name="window_style"></property>
-            <event name="OnButtonClick">run</event>
+            <event name="OnButtonClick">OnRun</event>
           </object>
         </object>
       </object>

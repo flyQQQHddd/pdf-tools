@@ -73,22 +73,30 @@ class MainWin ( wx.Frame ):
         self.Centre( wx.BOTH )
 
         # Connect Events
-        self.addFile.Bind( wx.EVT_BUTTON, self.add )
-        self.clearFiles.Bind( wx.EVT_BUTTON, self.clearfiles )
-        self.bRun.Bind( wx.EVT_BUTTON, self.run )
+        self.addFile.Bind( wx.EVT_BUTTON, self.OnAddFile )
+        self.clearFiles.Bind( wx.EVT_BUTTON, self.OnClearFiles )
+        self.fileList.Bind( wx.dataview.EVT_DATAVIEW_ITEM_CONTEXT_MENU, self.fileListOnDataViewListCtrlItemContextMenu, id = wx.ID_ANY )
+        self.fileList.Bind( wx.dataview.EVT_DATAVIEW_SELECTION_CHANGED, self.fileListOnDataViewListCtrlSelectionChanged, id = wx.ID_ANY )
+        self.bRun.Bind( wx.EVT_BUTTON, self.OnRun )
 
     def __del__( self ):
         pass
 
 
     # Virtual event handlers, override them in your derived class
-    def add( self, event ):
+    def OnAddFile( self, event ):
         event.Skip()
 
-    def clearfiles( self, event ):
+    def OnClearFiles( self, event ):
         event.Skip()
 
-    def run( self, event ):
+    def fileListOnDataViewListCtrlItemContextMenu( self, event ):
+        event.Skip()
+
+    def fileListOnDataViewListCtrlSelectionChanged( self, event ):
+        event.Skip()
+
+    def OnRun( self, event ):
         event.Skip()
 
 

@@ -1,5 +1,4 @@
 *.spec
-get-pip.py
 \build
 \dist
 \env
