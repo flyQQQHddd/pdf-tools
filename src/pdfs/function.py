@@ -5,7 +5,7 @@
 Documation: https://pypdf.readthedocs.io/en/stable/
 '''
 
-from pypdf import PdfWriter
+from pypdf import PdfWriter, PdfReader
 
 def merge(files: list, output: str, pages: list = None) -> None :
 
@@ -30,4 +30,13 @@ def merge(files: list, output: str, pages: list = None) -> None :
     merger.close()
     output.close()
 
+
+def getPageCount(file: str) -> int:
+
+    with open(file, "rb") as f:
+
+        reader = PdfReader(f)
+        pageCount = reader.get_num_pages()
+
+    return pageCount
 
