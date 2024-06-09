@@ -2499,7 +2499,19 @@
                 <property name="window_name"></property>
                 <property name="window_style"></property>
                 <object class="dataViewColumn" expanded="true">
-                  <property name="align">wxALIGN_CENTER|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</property>
+                  <property name="align">wxALIGN_CENTER</property>
+                  <property name="ellipsize"></property>
+                  <property name="flags">wxDATAVIEW_COL_HIDDEN</property>
+                  <property name="label">Name</property>
+                  <property name="mode">wxDATAVIEW_CELL_INERT</property>
+                  <property name="model_column">100</property>
+                  <property name="name">blackColumn</property>
+                  <property name="permission">protected</property>
+                  <property name="type">Text</property>
+                  <property name="width">-1</property>
+                </object>
+                <object class="dataViewColumn" expanded="true">
+                  <property name="align">wxALIGN_CENTER</property>
                   <property name="ellipsize"></property>
                   <property name="flags">wxDATAVIEW_COL_RESIZABLE</property>
                   <property name="label">序号</property>
@@ -2551,7 +2563,7 @@
                   <property name="ellipsize"></property>
                   <property name="flags">wxDATAVIEW_COL_RESIZABLE</property>
                   <property name="label">选择</property>
-                  <property name="mode">wxDATAVIEW_CELL_EDITABLE</property>
+                  <property name="mode">wxDATAVIEW_CELL_ACTIVATABLE</property>
                   <property name="model_column">4</property>
                   <property name="name">choose</property>
                   <property name="permission">protected</property>

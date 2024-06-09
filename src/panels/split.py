@@ -84,9 +84,9 @@ class SplitFrame(wins.SplitPanel):
         wins.SplitPanel.__init__(self, parent) 
 
         self.statusBar: wx.StatusBar = statusBar
-
         self.model = RangeListModel()
         self.rangeList.AssociateModel(self.model)
+        
 
     def OnAddRange(self, event):
         '''
@@ -181,6 +181,7 @@ class SplitFrame(wins.SplitPanel):
 
         # 处理 ranges 字符串
         # TODO: 处理 ranges 字符串
+        # for rangeStr in ranges:
 
         print('OnRun')
         self.statusBar.SetLabelText(f'拆分成功！【{output}】')

@@ -362,11 +362,12 @@ class SplitPanel ( wx.Panel ):
         fileList = wx.BoxSizer( wx.VERTICAL )
 
         self.rangeList = wx.dataview.DataViewCtrl( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.rangeIndex = self.rangeList.AppendTextColumn( _(u"序号"), 0, wx.dataview.DATAVIEW_CELL_INERT, -1, wx.ALIGN_CENTER|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, wx.dataview.DATAVIEW_COL_RESIZABLE )
+        self.blackColumn = self.rangeList.AppendTextColumn( _(u"Name"), 100, wx.dataview.DATAVIEW_CELL_INERT, -1, wx.ALIGN_CENTER, wx.dataview.DATAVIEW_COL_HIDDEN )
+        self.rangeIndex = self.rangeList.AppendTextColumn( _(u"序号"), 0, wx.dataview.DATAVIEW_CELL_INERT, -1, wx.ALIGN_CENTER, wx.dataview.DATAVIEW_COL_RESIZABLE )
         self.splitStr = self.rangeList.AppendTextColumn( _(u"拆分范围"), 1, wx.dataview.DATAVIEW_CELL_EDITABLE, -1, wx.ALIGN_CENTER, wx.dataview.DATAVIEW_COL_RESIZABLE )
         self.rangeName = self.rangeList.AppendTextColumn( _(u"输出文件名"), 2, wx.dataview.DATAVIEW_CELL_EDITABLE, 420, wx.ALIGN_LEFT, wx.dataview.DATAVIEW_COL_RESIZABLE )
         self.pageCount = self.rangeList.AppendTextColumn( _(u"页数"), 3, wx.dataview.DATAVIEW_CELL_INERT, -1, wx.ALIGN_CENTER, wx.dataview.DATAVIEW_COL_RESIZABLE )
-        self.choose = self.rangeList.AppendToggleColumn( _(u"选择"), 4, wx.dataview.DATAVIEW_CELL_EDITABLE, -1, wx.ALIGN_CENTER, wx.dataview.DATAVIEW_COL_RESIZABLE )
+        self.choose = self.rangeList.AppendToggleColumn( _(u"选择"), 4, wx.dataview.DATAVIEW_CELL_ACTIVATABLE, -1, wx.ALIGN_CENTER, wx.dataview.DATAVIEW_COL_RESIZABLE )
         fileList.Add( self.rangeList, 1, wx.ALL|wx.EXPAND, 5 )
 
 
