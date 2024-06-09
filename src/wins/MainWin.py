@@ -10,7 +10,6 @@
 import wx
 import wx.xrc
 import wx.dataview
-import wx.html
 
 import gettext
 _ = gettext.gettext
@@ -216,46 +215,47 @@ class MergePanel ( wx.Panel ):
 
         MainBox = wx.BoxSizer( wx.VERTICAL )
 
-        bSizer7 = wx.BoxSizer( wx.HORIZONTAL )
+        buttonList = wx.BoxSizer( wx.HORIZONTAL )
 
+        buttonList.SetMinSize( wx.Size( -1,40 ) )
         self.addFile = wx.Button( self, wx.ID_ANY, _(u"添加文件"), wx.DefaultPosition, wx.DefaultSize, 0 )
-        bSizer7.Add( self.addFile, 0, wx.ALL|wx.EXPAND, 5 )
+        buttonList.Add( self.addFile, 0, wx.ALL|wx.EXPAND, 5 )
 
         self.clearFiles = wx.Button( self, wx.ID_ANY, _(u"清空列表"), wx.DefaultPosition, wx.DefaultSize, 0 )
-        bSizer7.Add( self.clearFiles, 0, wx.ALL|wx.EXPAND, 5 )
+        buttonList.Add( self.clearFiles, 0, wx.ALL|wx.EXPAND, 5 )
 
-        bSizer12 = wx.BoxSizer( wx.VERTICAL )
+        blackPanel = wx.BoxSizer( wx.VERTICAL )
 
         self.black = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-        bSizer12.Add( self.black, 1, wx.EXPAND |wx.ALL, 5 )
+        blackPanel.Add( self.black, 1, wx.EXPAND |wx.ALL, 5 )
 
 
-        bSizer7.Add( bSizer12, 1, wx.EXPAND, 5 )
+        buttonList.Add( blackPanel, 1, wx.EXPAND, 5 )
 
         self.UpItem = wx.BitmapButton( self, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.DefaultSize, wx.BU_AUTODRAW|0 )
 
         self.UpItem.SetBitmap( wx.Bitmap( u"source/up.bmp", wx.BITMAP_TYPE_ANY ) )
-        bSizer7.Add( self.UpItem, 0, wx.ALL|wx.EXPAND, 5 )
+        buttonList.Add( self.UpItem, 0, wx.ALL|wx.EXPAND, 5 )
 
         self.DownItem = wx.BitmapButton( self, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.DefaultSize, wx.BU_AUTODRAW|0 )
 
         self.DownItem.SetBitmap( wx.Bitmap( u"source/down.bmp", wx.BITMAP_TYPE_ANY ) )
-        bSizer7.Add( self.DownItem, 0, wx.ALL|wx.EXPAND, 5 )
+        buttonList.Add( self.DownItem, 0, wx.ALL|wx.EXPAND, 5 )
 
 
-        MainBox.Add( bSizer7, 0, wx.EXPAND, 5 )
+        MainBox.Add( buttonList, 0, wx.EXPAND, 5 )
 
-        fileList1 = wx.BoxSizer( wx.VERTICAL )
+        fileList = wx.BoxSizer( wx.VERTICAL )
 
         self.fileList = wx.dataview.DataViewListCtrl( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.dataview.DV_ROW_LINES )
         self.fileIndex = self.fileList.AppendTextColumn( _(u"序号"), wx.dataview.DATAVIEW_CELL_INERT, -1, wx.ALIGN_CENTER, wx.dataview.DATAVIEW_COL_RESIZABLE )
         self.fileName = self.fileList.AppendTextColumn( _(u"文件名"), wx.dataview.DATAVIEW_CELL_INERT, 500, wx.ALIGN_LEFT, wx.dataview.DATAVIEW_COL_RESIZABLE )
         self.pageCount = self.fileList.AppendTextColumn( _(u"页数"), wx.dataview.DATAVIEW_CELL_INERT, -1, wx.ALIGN_CENTER, wx.dataview.DATAVIEW_COL_RESIZABLE )
         self.choose = self.fileList.AppendToggleColumn( _(u"选择"), wx.dataview.DATAVIEW_CELL_ACTIVATABLE, -1, wx.ALIGN_CENTER|wx.ALIGN_LEFT, wx.dataview.DATAVIEW_COL_RESIZABLE )
-        fileList1.Add( self.fileList, 1, wx.ALL|wx.EXPAND, 5 )
+        fileList.Add( self.fileList, 1, wx.ALL|wx.EXPAND, 5 )
 
 
-        MainBox.Add( fileList1, 1, wx.EXPAND, 5 )
+        MainBox.Add( fileList, 1, wx.EXPAND, 5 )
 
         output = wx.BoxSizer( wx.HORIZONTAL )
 
@@ -324,12 +324,92 @@ class SplitPanel ( wx.Panel ):
 
         MainBox = wx.BoxSizer( wx.VERTICAL )
 
+        input = wx.BoxSizer( wx.HORIZONTAL )
+
+        self.inputFileText = wx.StaticText( self, wx.ID_ANY, _(u"选择输入文件"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.inputFileText.Wrap( -1 )
+
+        input.Add( self.inputFileText, 0, wx.ALL|wx.EXPAND, 5 )
+
+        self.inFile = wx.FilePickerCtrl( self, wx.ID_ANY, wx.EmptyString, _(u"选择输入文件"), _(u"PDF files (*.pdf)|*.pdf"), wx.DefaultPosition, wx.DefaultSize, wx.FLP_OPEN|wx.FLP_USE_TEXTCTRL )
+        input.Add( self.inFile, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        MainBox.Add( input, 0, wx.EXPAND, 5 )
+
+        self.m_staticline1 = wx.StaticLine( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.LI_HORIZONTAL )
+        MainBox.Add( self.m_staticline1, 0, wx.EXPAND |wx.ALL, 5 )
+
+        buttonList = wx.BoxSizer( wx.HORIZONTAL )
+
+        self.addRange = wx.Button( self, wx.ID_ANY, _(u"添加拆分片段"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        buttonList.Add( self.addRange, 0, wx.ALL|wx.EXPAND, 5 )
+
+        self.clearRanges = wx.Button( self, wx.ID_ANY, _(u"清空列表"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        buttonList.Add( self.clearRanges, 0, wx.ALL|wx.EXPAND, 5 )
+
+        blackPanel = wx.BoxSizer( wx.HORIZONTAL )
+
+        self.black = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        blackPanel.Add( self.black, 1, wx.EXPAND |wx.ALL, 5 )
+
+
+        buttonList.Add( blackPanel, 1, wx.EXPAND, 5 )
+
+
+        MainBox.Add( buttonList, 0, wx.EXPAND, 5 )
+
+        fileList = wx.BoxSizer( wx.VERTICAL )
+
+        self.rangeList = wx.dataview.DataViewCtrl( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.rangeIndex = self.rangeList.AppendTextColumn( _(u"序号"), 0, wx.dataview.DATAVIEW_CELL_INERT, -1, wx.ALIGN_CENTER|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, wx.dataview.DATAVIEW_COL_RESIZABLE )
+        self.splitStr = self.rangeList.AppendTextColumn( _(u"拆分范围"), 1, wx.dataview.DATAVIEW_CELL_EDITABLE, -1, wx.ALIGN_CENTER, wx.dataview.DATAVIEW_COL_RESIZABLE )
+        self.rangeName = self.rangeList.AppendTextColumn( _(u"输出文件名"), 2, wx.dataview.DATAVIEW_CELL_EDITABLE, 420, wx.ALIGN_LEFT, wx.dataview.DATAVIEW_COL_RESIZABLE )
+        self.pageCount = self.rangeList.AppendTextColumn( _(u"页数"), 3, wx.dataview.DATAVIEW_CELL_INERT, -1, wx.ALIGN_CENTER, wx.dataview.DATAVIEW_COL_RESIZABLE )
+        self.choose = self.rangeList.AppendToggleColumn( _(u"选择"), 4, wx.dataview.DATAVIEW_CELL_EDITABLE, -1, wx.ALIGN_CENTER, wx.dataview.DATAVIEW_COL_RESIZABLE )
+        fileList.Add( self.rangeList, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        MainBox.Add( fileList, 1, wx.EXPAND, 5 )
+
+        output = wx.BoxSizer( wx.HORIZONTAL )
+
+        self.outDirText = wx.StaticText( self, wx.ID_ANY, _(u"选择输出目录"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.outDirText.Wrap( -1 )
+
+        output.Add( self.outDirText, 0, wx.ALL|wx.EXPAND, 5 )
+
+        self.outDir = wx.DirPickerCtrl( self, wx.ID_ANY, wx.EmptyString, _(u"选择输出目录"), wx.DefaultPosition, wx.DefaultSize, wx.DIRP_DEFAULT_STYLE )
+        output.Add( self.outDir, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        MainBox.Add( output, 0, wx.EXPAND, 5 )
+
+        self.bRun = wx.Button( self, wx.ID_ANY, _(u"拆分"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        MainBox.Add( self.bRun, 0, wx.ALL|wx.EXPAND, 5 )
+
 
         self.SetSizer( MainBox )
         self.Layout()
 
+        # Connect Events
+        self.addRange.Bind( wx.EVT_BUTTON, self.OnAddRange )
+        self.clearRanges.Bind( wx.EVT_BUTTON, self.OnClearRanges )
+        self.bRun.Bind( wx.EVT_BUTTON, self.OnRun )
+
     def __del__( self ):
         pass
+
+
+    # Virtual event handlers, override them in your derived class
+    def OnAddRange( self, event ):
+        event.Skip()
+
+    def OnClearRanges( self, event ):
+        event.Skip()
+
+    def OnRun( self, event ):
+        event.Skip()
 
 
 ###########################################################################
@@ -343,8 +423,11 @@ class ToPNGPanel ( wx.Panel ):
 
         MainBox = wx.BoxSizer( wx.VERTICAL )
 
-        self.m_htmlWin1 = wx.html.HtmlWindow( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.html.HW_SCROLLBAR_AUTO )
-        MainBox.Add( self.m_htmlWin1, 0, wx.ALL, 5 )
+        self.m_dataViewCtrl1 = wx.dataview.DataViewCtrl( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_dataViewColumn1 = self.m_dataViewCtrl1.AppendTextColumn( _(u"Name"), 0, wx.dataview.DATAVIEW_CELL_INERT, -1, wx.ALIGN_LEFT, wx.dataview.DATAVIEW_COL_RESIZABLE )
+        self.m_dataViewColumn2 = self.m_dataViewCtrl1.AppendTextColumn( _(u"Name"), 0, wx.dataview.DATAVIEW_CELL_INERT, -1, wx.ALIGN_LEFT, wx.dataview.DATAVIEW_COL_RESIZABLE )
+        self.m_dataViewColumn3 = self.m_dataViewCtrl1.AppendTextColumn( _(u"Name"), 0, wx.dataview.DATAVIEW_CELL_INERT, -1, wx.ALIGN_LEFT, wx.dataview.DATAVIEW_COL_RESIZABLE )
+        MainBox.Add( self.m_dataViewCtrl1, 1, wx.ALL|wx.EXPAND, 5 )
 
 
         self.SetSizer( MainBox )

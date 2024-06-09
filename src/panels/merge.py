@@ -62,12 +62,8 @@ class MergeFrame(wins.MergePanel):
         将在 fileListOnDataViewListCtrlItemContextMenu 之前被执行
         '''
 
-        print('OnSelectionChanged')
-
         selection = self.fileList.GetSelection()
         self.selected = self.fileList.ItemToRow(selection)
-
-        print(self.selected)
 
 
     def fileListOnDataViewListCtrlItemContextMenu(self, event):
@@ -146,7 +142,6 @@ class MergeFrame(wins.MergePanel):
             if errorBox.ShowModal() == wx.ID_YES:
                 errorBox.Destroy()
 
-            self.statusBar.SetLabelText(f'ERROR：输入文件列表为空')
             return
         
         if output == '':
@@ -160,7 +155,6 @@ class MergeFrame(wins.MergePanel):
             if errorBox.ShowModal() == wx.ID_YES:
                 errorBox.Destroy()
 
-            self.statusBar.SetLabelText(f'ERROR：输出文件为空')
             return
 
         # 执行合并

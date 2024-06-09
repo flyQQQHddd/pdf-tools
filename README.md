@@ -76,6 +76,10 @@ https://github.com/wxFormBuilder/wxFormBuilder/releases/download/v4.2.1/wxFormBu
 
 ## 更新日志
 
+- 2024.6.9：开发了拆分 PDF 页面
+    - TODO：拆分 PDF 的功能
+    - NOTE：在拆分 PDF 页面，使用 PyDataViewModel 和 DataViewCtrl
+    - BUG：拆分 PDF 页面的第一列不居中，'选择'列无法实现应有的功能
 - 2024.6.8：开发了集成界面，为合并 PDF 页面添加了调整文件次序的按钮
 - 2024.6.7：更新合并 PDF 功能，实现了调整输入文件次序的功能（右键菜单）
 - 2024.6.6：首次提交，实现了合并 PDF 功能

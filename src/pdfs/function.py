@@ -40,3 +40,27 @@ def getPageCount(file: str) -> int:
 
     return pageCount
 
+
+def getMetaData(file: str):
+
+    with open(file, "rb") as f:
+
+        reader = PdfReader(f)
+        metadata = reader.metadata
+        text = reader
+        
+
+    return metadata, text
+
+
+if __name__ == "__main__":
+
+    metadata, text = getMetaData("C:/Users/QHD/Desktop/2024年上半年英语六级笔试准考证.pdf")
+
+    print(text)
+
+    for item in metadata:
+       
+       print(item, ':', metadata[item])
+
+
