@@ -2,7 +2,9 @@
 import wx
 import src.wins as wins
 from src.pdfs import function as F
-
+import config
+from os.path import join
+ 
 class MergeFrame(wins.MergePanel):
 
     def __init__(self, parent, statusBar): 
@@ -17,6 +19,9 @@ class MergeFrame(wins.MergePanel):
         ItemDown = self.file_menu.Append(1, "下移")
         self.file_menu.Bind(wx.EVT_MENU, self.OnItemUp, ItemUp)
         self.file_menu.Bind(wx.EVT_MENU, self.OnItemDown, ItemDown)
+
+        self.UpItem.SetBitmap(wx.Bitmap(join(config.basedir, 'up.bmp')))
+        self.DownItem.SetBitmap(wx.Bitmap(join(config.basedir, 'down.bmp')))
 
 
     def OnAddFile(self, event):

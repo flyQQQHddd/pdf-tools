@@ -22,7 +22,7 @@ _ = gettext.gettext
 class MainWin ( wx.Frame ):
 
     def __init__( self, parent ):
-        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = _(u"PDF 工具箱"), pos = wx.DefaultPosition, size = wx.Size( 879,571 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = _(u"集成界面"), pos = wx.DefaultPosition, size = wx.Size( 879,571 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
         self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 

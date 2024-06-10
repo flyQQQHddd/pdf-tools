@@ -36,6 +36,9 @@ mkdir env
 Step3：安装 `PIP`
 
 ```
+# 下载 get-pip.py 文件
+https://bootstrap.pypa.io/get-pip.py
+# 执行 get-pip.py 以下载 PIP
 ./env/python.exe ./get-pip.py
 ```
 
@@ -52,6 +55,12 @@ Step5：安装第三方包
 
 ```
 ./env/python.exe -m pip install -r ./requirements.txt
+```
+
+### 打开 wxFormBuilder 界面
+
+```
+./formBuilder.ps1
 ```
 
 ### 运行主程序
@@ -75,7 +84,12 @@ https://github.com/wxFormBuilder/wxFormBuilder/releases/download/v4.2.1/wxFormBu
 - 合并 PDF
 
 ## 更新日志
-
+- 2024.6.10-2：
+    - NEW：添加全局配置文件 config.py
+    - NEW：基于 PyInstaller 将静态文件同时打包进 EXE 中
+- 2024.6.10：
+    - NEW：首页添加 RichTextCtrl 控件
+    - NEW：添加功能图标
 - 2024.6.9-2：
     - DEBUG：修改了 2024.6.9 第一列不居中的 BUG (b2024060901) ，官方规定第一列无法设置样式，所以设置一个空白的第一列并隐藏
     - DEBUG：修改了 2024.6.9 '选择'列无法实现应有的功能 BUG (b2024060902) ，需要指定 Column 的属性为 DATAVIEW_CELL_ACTIVATABLE
